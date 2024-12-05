@@ -1,6 +1,6 @@
 {
-  "name": "typescript-action",
-  "description": "GitHub Actions TypeScript template",
+  "name": "cgft-testgen-action",
+  "description": "CGFT Test Generation Action",
   "version": "0.0.0",
   "author": "",
   "private": true,
@@ -67,11 +67,14 @@
     ]
   },
   "dependencies": {
-    "@actions/core": "^1.11.1"
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.0",
+    "git-diff": "^2.0.6"
   },
   "devDependencies": {
     "@github/local-action": "^2.2.0",
     "@jest/globals": "^29.7.0",
+    "@types/git-diff": "^2.0.7",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.9.0",
     "@typescript-eslint/eslint-plugin": "^8.14.0",

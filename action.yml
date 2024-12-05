@@ -1,6 +1,7 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'TestGen'
+description:
+  'An action to post test results or generate diff patches based on input'
+author: 'CGFT'
 
 # Add your action's branding here. This will appear on the GitHub Marketplace.
 branding:
@@ -9,10 +10,16 @@ branding:
 
 # Define your inputs here.
 inputs:
-  milliseconds:
-    description: 'Your input description here'
+  token:
+    description: 'Github Token'
     required: true
-    default: '1000'
+  action:
+    description: 'The action to perform'
+    required: true
+    default: 'post-tests'
+    options:
+      - 'post-tests'
+      - 'apply-tests'
 
 # Define your outputs here.
 outputs:
@@ -20,5 +27,5 @@ outputs:
     description: 'Your output description here'
 
 runs:
-  using: node20
-  main: dist/index.js
+  using: 'node12'
+  main: 'dist/index.js'
