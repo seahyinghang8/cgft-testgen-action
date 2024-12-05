@@ -79,8 +79,7 @@ ${displayedTest.filename}
     // Display the tests in PR with a comment for each test
     await octokit.rest.issues.createComment({
       ...context.repo,
-      issue_number: 59,
-      // issue_number: context.issue.number,
+      issue_number: context.issue.number,
       body
     })
   }
