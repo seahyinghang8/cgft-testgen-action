@@ -1,4 +1,4 @@
-name: 'TestGen'
+name: 'CGFT Test Generation'
 description:
   'An action to post test results or generate diff patches based on input'
 author: 'CGFT'
