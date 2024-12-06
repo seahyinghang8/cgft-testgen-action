@@ -76,7 +76,7 @@ ${displayedTest.diff}
 ${displayedTest.filename}
 </details>
 `
-    core.info(body)
+
     await octokit.rest.issues.createComment({
       ...context.repo,
       issue_number: context.issue.number,
