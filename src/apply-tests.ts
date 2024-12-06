@@ -93,6 +93,15 @@ export async function applyTests(): Promise<void> {
     }
   }
   core.info('Finished applying tests')
+
+  // Delete all the test comments
+  for (const comment of ourBotComments) {
+    core.info(`Deleting comment: ${comment.id}`)
+    await octokit.rest.issues.deleteComment({
+      ...context.repo,
+      comment_id: comment.id
+    })
+  }
 }
 
 interface Patch {
