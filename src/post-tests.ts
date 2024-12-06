@@ -62,6 +62,8 @@ export async function postTestResults(
 
   const octokit = getOctokit(core.getInput('token'))
 
+  core.info('Octokit created')
+
   for (const [i, displayedTest] of displayedTests.entries()) {
     core.info(
       `Creating comment for test ${i + 1}: ${displayedTest.name.trim()}`
