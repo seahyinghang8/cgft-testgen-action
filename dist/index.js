@@ -42220,7 +42220,6 @@ async function postTestResults(generatedTestFilename = 'test_results.json') {
     }
     core.info(`Total displayed tests: ${displayedTests.length}`);
     const octokit = (0, github_1.getOctokit)(core.getInput('token'));
-    core.info('Octokit created');
     for (const [i, displayedTest] of displayedTests.entries()) {
         core.info(`Creating comment for test ${i + 1}: ${displayedTest.name.trim()}`);
         // TODO: Add a link to the test file
@@ -42234,12 +42233,10 @@ ${displayedTest.filename}
 </details>
 `;
         core.info(body);
-        // Display the tests in PR with a comment for each test
-        core.info(`Posting comment for test ${i + 1} on issue ${github_1.context.issue.number}`);
         await octokit.rest.issues.createComment({
             ...github_1.context.repo,
             issue_number: github_1.context.issue.number,
-            body: 'Testing 123'
+            body
         });
     }
     core.info('Finished posting test results');
