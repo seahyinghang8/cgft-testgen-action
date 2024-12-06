@@ -41936,6 +41936,14 @@ async function applyTests() {
         }
     }
     core.info('Finished applying tests');
+    // Delete all the test comments
+    for (const comment of ourBotComments) {
+        core.info(`Deleting comment: ${comment.id}`);
+        await octokit.rest.issues.deleteComment({
+            ...github_1.context.repo,
+            comment_id: comment.id
+        });
+    }
 }
 function parseCommentToPatch(comment) {
     const bodyNormalized = comment.body.replaceAll('\r\n', '\n');
@@ -42232,7 +42240,6 @@ ${displayedTest.diff}
 ${displayedTest.filename}
 </details>
 `;
-        core.info(body);
         await octokit.rest.issues.createComment({
             ...github_1.context.repo,
             issue_number: github_1.context.issue.number,
