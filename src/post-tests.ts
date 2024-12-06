@@ -60,6 +60,8 @@ export async function postTestResults(
 
   core.info(`Total displayed tests: ${displayedTests.length}`)
 
+  const octokit = getOctokit(core.getInput('token'))
+
   for (const [i, displayedTest] of displayedTests.entries()) {
     core.info(
       `Creating comment for test ${i + 1}: ${displayedTest.name.trim()}`
@@ -74,13 +76,15 @@ ${displayedTest.diff}
 ${displayedTest.filename}
 </details>
 `
-
-    const octokit = getOctokit(core.getInput('token'))
+    core.info(body)
     // Display the tests in PR with a comment for each test
+    core.info(
+      `Posting comment for test ${i + 1} on issue ${context.issue.number}`
+    )
     await octokit.rest.issues.createComment({
       ...context.repo,
       issue_number: context.issue.number,
-      body
+      body: 'Testing 123'
     })
   }
   core.info('Finished posting test results')
