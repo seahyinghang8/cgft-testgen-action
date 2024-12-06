@@ -58,7 +58,7 @@ export async function applyTests(): Promise<void> {
     (comment: Comment) =>
       comment.performed_via_github_app?.name === 'GitHub Actions'
   )
-  core.info(`Total testgencomments: ${ourBotComments.length}`)
+  core.info(`Total number of generated test comments: ${ourBotComments.length}`)
 
   // Get all the tests with +1 reactions
   const acceptedTestComments = ourBotComments.filter(
